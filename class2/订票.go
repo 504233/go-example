@@ -72,6 +72,7 @@ func buy(grobal int, surplus int, user userinfo) {
 		} else {
 			surplus -= buynum
 			fmt.Printf("购票成功！！！\n")
+			fmt.Printf("购票人姓名：%v      购票数量：%v\n", user.name, buynum)
 			menu(grobal, surplus, user)
 		}
 	} else {
