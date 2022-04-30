@@ -26,4 +26,20 @@ func menu() {
 	fmt.Printf("[3]删除学生\n")
 	fmt.Printf("[4]显示学生列表\n")
 	fmt.Printf("===================================================================\n")
+	fmt.Printf("[0]退出\n")
+
+	fmt.Scan(&menuselect)
+	switch menuselect {
+	case 0:
+		break
+	case 1:
+		addstudent()
+	case 2:
+		editstudent()
+	case 3:
+		delstudent()
+	case 4:
+		showstudent()
+	default:
+		fmt.Println("error!")
 }
