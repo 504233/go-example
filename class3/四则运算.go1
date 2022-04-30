@@ -1,0 +1,51 @@
+package main
+
+import "fmt"
+
+func main() {
+	// 四则运算
+	// 函数式编程实现
+	var a, b int
+	var ch string
+	fmt.Println("input:")
+	fmt.Scan(&a, &ch, &b) //输入格式：以空格为分隔符，例如：9 + 9
+	calc(a, ch, b)
+}
+
+func calc(a int, ch string, b int) {
+	switch ch {
+	case "+":
+		oper(a, b, add)
+	case "-":
+		oper(a, b, sub)
+	case "*":
+		oper(a, b, mul)
+	case "/":
+		oper(a, b, div)
+	default:
+		oper(a, b, add)
+
+	}
+}
+
+func add(a, b int) int {
+	return a + b
+}
+
+func sub(a, b int) int {
+	return a - b
+}
+
+func mul(a, b int) int {
+	return a * b
+}
+
+func div(a, b int) int {
+	return a / b
+}
+
+func oper(a, b int, fun func(int, int) int) {
+	fmt.Println(a, b, fun) //fun将来时 Add的地址
+	ret := fun(a, b)
+	fmt.Println(ret) //调用回调函数
+}
