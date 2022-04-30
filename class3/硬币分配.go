@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 /*
 你有50枚金币，需要分配给以下几个人：Matthew,Sarah,Augustus,Heidi,Emilie,Peter,Giana,Adriano,Aaron,Elizabeth。
@@ -23,4 +26,25 @@ var (
 func main() {
 	left := dispatchCoin()
 	fmt.Println("剩下：", left)
+}
+func dispatchCoin() int {
+	for _, u := range users {
+		tm := make(map[string]int)
+		for _, s := range u {
+			ts := strings.ToLower(string(s))
+			switch ts {
+			case "e":
+				tm[u] += 1
+			case "i":
+				tm[u] += 2
+			case "o":
+				tm[u] += 3
+			case "u":
+				tm[u] += 4
+			}
+		}
+		fmt.Printf("用户 %-10s 获得金币 %-2d 个\n", u, tm[u])
+		coins -= tm[u]
+	}
+	return coins
 }
